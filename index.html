@@ -11,15 +11,18 @@
         * { box-sizing: border-box; }
         body { font-family: 'Inter', sans-serif; background: var(--bg); margin:0; padding-top: 100px; display: flex; flex-direction: column; min-height: 100vh; }
         
+         
         header { position: fixed; top: 0; width: 100%; background: #ffffff; z-index: 10000; border-bottom: 2px solid #edf2f7; height: 85px; }
         .header-wrap { display: flex; align-items: center; padding: 0 5%; gap: 20px; max-width: 1400px; margin: 0 auto; height: 100%; }
         .logo-area { flex-shrink: 0; display: flex; align-items: center; }
-        .logo-area img { height: 75px; width: auto; object-fit: contain; }
+        .logo-area img { height: 70px; width: auto; object-fit: contain; }
         
-        .nav-item { position: relative; flex-shrink: 0; }
+         
+        .nav-item { position: relative; flex-shrink: 0; z-index: 10001; }
         .btn-kategori { 
             background: var(--primary) !important; color: #ffffff !important; border: none; padding: 12px 20px; border-radius: 8px; font-weight: 700; 
             cursor: pointer; display: flex; align-items: center; gap: 10px; font-size: 14px; min-width: 150px; justify-content: center;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);  
         }
         
         .mega-menu { 
@@ -37,18 +40,21 @@
 
         .container { max-width: 1400px; margin: 0 auto; padding: 10px 20px; flex: 1; width: 100%; }
 
+         
         .bento-container { display: flex; gap: 20px; margin-bottom: 15px; width: 100%; }
         .slider-wrapper { flex: 7; position: relative; overflow: hidden; border-radius: 12px; }
         .slider-wrapper img { width: 100%; aspect-ratio: 21/9; max-height: 350px; object-fit: cover; border-radius: 12px; }
         .side-banners { flex: 3; display: flex; flex-direction: column; gap: 15px; }
         .side-banner img { width: 100%; height: 100%; object-fit: cover; border-radius: 12px; }
 
+         
         .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 20px; }
         .card { background: #fff; border-radius: 12px; border: 1px solid #e5e7eb; padding: 15px; cursor: pointer; transition: 0.3s; text-decoration: none; color: inherit; }
         .card:hover { transform: translateY(-5px); border-color: var(--primary); box-shadow: 0 5px 15px rgba(0,0,0,0.05); }
         .card img { width: 100%; aspect-ratio: 1/1; object-fit: contain; margin-bottom: 10px; }
         .card-title { font-size: 13px; font-weight: 600; margin: 0; height: 55px; line-height: 1.4; overflow: hidden; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; }
 
+         
         footer { background: var(--footer); color: #cbd5e1; padding: 40px 5% 20px; margin-top: 50px; }
         .ft-floor-1 { width: 100%; border-bottom: 1px solid #334155; padding-bottom: 25px; margin-bottom: 30px; }
         .ft-floor-2 { display: grid; grid-template-columns: 1.5fr 1fr 1fr 1.5fr; gap: 30px; max-width: 1400px; margin: 0 auto; }
@@ -57,7 +63,22 @@
         .ft-box a:hover { color: #fff; cursor: pointer; }
         .info-item { display: flex; gap: 10px; margin-bottom: 15px; font-size: 14px; align-items: flex-start; }
         .info-item i { color: #fff; margin-top: 4px; }
-        .btn-maps-ft { background: var(--primary) !important; color: #fff !important; text-align: center; padding: 12px; border-radius: 6px; font-weight: 700; display: block; text-decoration: none; width: 100%; }
+        
+         
+        .btn-maps-ft { 
+            background: #0d6efd !important; 
+            color: #ffffff !important; 
+            text-align: center; 
+            padding: 12px; 
+            border-radius: 6px; 
+            font-weight: 700; 
+            display: block; 
+            text-decoration: none; 
+            width: 100%; 
+            transition: 0.3s;
+        }
+        .btn-maps-ft:hover { background: #0b5ed7 !important; }
+
         .bottom-bar { text-align: center; border-top: 1px solid #334155; margin-top: 40px; padding-top: 20px; font-size: 12px; opacity: 0.6; }
 
         @media (max-width: 768px) {
