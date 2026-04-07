@@ -13,48 +13,43 @@
         
          
         header { position: fixed; top: 0; width: 100%; background: #ffffff; z-index: 10000; border-bottom: 2px solid #edf2f7; height: 85px; }
-        .header-wrap { display: flex; align-items: center; padding: 0 5%; gap: 30px; max-width: 1400px; margin: 0 auto; height: 100%; }
+        .header-wrap { display: flex; align-items: center; padding: 0 3%; gap: 15px; max-width: 1400px; margin: 0 auto; height: 100%; }
         
-        .logo-area { flex-shrink: 0; display: flex; align-items: center; }
+        .logo-area { flex: 0 0 auto; display: flex; align-items: center; }
         .logo-area img { height: 80px; width: auto; object-fit: contain; }  
         
          
-        .nav-item { position: relative; flex-shrink: 0; z-index: 10001; }
+        .nav-item { position: relative; flex: 0 0 auto; z-index: 10001; }
         .btn-kategori { 
-            background: var(--primary) !important; 
+            background: #0d6efd !important;  
             color: #ffffff !important; 
             border: none; 
             padding: 12px 20px; 
             border-radius: 8px; 
             font-weight: 700; 
             cursor: pointer; 
-            display: flex; 
+            display: flex !important;  
             align-items: center; 
             gap: 10px; 
             font-size: 14px; 
-            min-width: 150px; 
+            min-width: 160px;  
             justify-content: center;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
         }
         
          
-        .mega-menu { 
-            display: none; position: absolute; top: 100%; left: 0; background: #ffffff; min-width: 250px; 
-            box-shadow: 0 10px 30px rgba(0,0,0,0.15); border: 1px solid #e2e8f0; border-radius: 0 0 8px 8px; margin-top: 5px; 
-        }
+        .mega-menu { display: none; position: absolute; top: 100%; left: 0; background: #ffffff; min-width: 250px; box-shadow: 0 10px 30px rgba(0,0,0,0.15); border: 1px solid #e2e8f0; border-radius: 0 0 8px 8px; margin-top: 5px; }
         .nav-item.show-menu .mega-menu { display: block; }
         .lvl-1 { position: relative; border-bottom: 1px solid #f1f5f9; }
         .lvl-1 a { display: flex; justify-content: space-between; align-items: center; padding: 14px 20px; text-decoration: none; color: #334155 !important; font-size: 13px; font-weight: 600; cursor: pointer; }
         .lvl-1:hover > a { background: #f8fafc; color: var(--primary) !important; }
-        
-         
-        .lvl-2-wrap { display: none; position: absolute; left: 100%; top: 0; background: #ffffff; min-width: 250px; border-left: 1px solid #e2e8f0; }
+        .lvl-2-wrap { display: none; position: absolute; left: 100%; top: 0; background: #ffffff; min-width: 250px; border-left: 1px solid #e2e8f0; box-shadow: 10px 0 30px rgba(0,0,0,0.1); }
         .lvl-1:hover .lvl-2-wrap { display: block; }
         .lvl-2 { position: relative; border-bottom: 1px solid #f1f5f9; }
-        .lvl-3-wrap { display: none; position: absolute; left: 100%; top: 0; background: #ffffff; min-width: 250px; border-left: 1px solid #e2e8f0; }
+        .lvl-3-wrap { display: none; position: absolute; left: 100%; top: 0; background: #ffffff; min-width: 250px; border-left: 1px solid #e2e8f0; box-shadow: 10px 0 30px rgba(0,0,0,0.1); }
         .lvl-2:hover .lvl-3-wrap { display: block; }
 
-        .search-area { flex-grow: 1; position: relative; min-width: 200px; }
+        .search-area { flex: 1; position: relative; min-width: 150px; }
         .search-area input { width: 100%; padding: 12px 15px 12px 45px; border-radius: 8px; border: 1px solid #d1d5db; outline: none; background: #f9fafb; }
         .search-area i { position: absolute; left: 16px; top: 14px; color: #9ca3af; }
 
@@ -83,27 +78,16 @@
         .ft-box a:hover { color: #fff; cursor: pointer; }
         .info-item { display: flex; gap: 10px; margin-bottom: 15px; font-size: 14px; align-items: flex-start; }
         .info-item i { color: #fff; margin-top: 4px; }
-        
-         
-        .btn-maps-ft { 
-            background: #0d6efd !important; 
-            color: #ffffff !important; 
-            text-align: center; 
-            padding: 12px; 
-            border-radius: 6px; 
-            font-weight: 700; 
-            display: block; 
-            text-decoration: none; 
-            width: 100%; 
-        }
-
+        .btn-maps-ft { background: #0d6efd !important; color: #fff !important; text-align: center; padding: 12px; border-radius: 6px; font-weight: 700; display: block; text-decoration: none; width: 100%; }
         .bottom-bar { text-align: center; border-top: 1px solid #334155; margin-top: 40px; padding-top: 20px; font-size: 12px; opacity: 0.6; }
 
         @media (max-width: 768px) {
             body { padding-top: 140px; }
-            .header-wrap { flex-wrap: wrap; height: auto; padding: 10px; }
+            .header-wrap { flex-wrap: wrap; height: auto; padding: 10px; gap: 10px; }
+            .logo-area { width: 100%; justify-content: center; }
+            .nav-item { flex: 1; }
+            .btn-kategori { min-width: 100%; }
             .search-area { width: 100%; order: 3; }
-            .ft-floor-2 { grid-template-columns: 1fr; }
             .lvl-2-wrap, .lvl-3-wrap { position: static; box-shadow: none; border-left: none; padding-left: 20px; }
         }
     </style>
@@ -117,10 +101,9 @@
                     </div>
         
         <div class="nav-item" id="navBungkus">
-            <button class="btn-kategori" onclick="toggleMenu(event)">
+            <button class="btn-kategori" id="btnUtamaKategori">
                 <i class="fas fa-bars"></i> KATEGORI
             </button>
-            
             <div class="mega-menu" id="menuKonten">
                                     <div class="lvl-1">
                         <a>Kesehatan <i class="fas fa-chevron-right" style="font-size:10px"></i></a>
@@ -187,22 +170,26 @@
 </footer>
 
 <script>
-    function toggleMenu(e) {
+    
+    document.getElementById('btnUtamaKategori').onclick = (e) => {
         e.stopPropagation();
         document.getElementById('navBungkus').classList.toggle('show-menu');
-    }
+    };
+    
     function filterCepat() {
         let k = document.getElementById('cari').value.toLowerCase();
         document.querySelectorAll('.card').forEach(card => {
             card.style.display = card.dataset.nama.includes(k) ? 'block' : 'none';
         });
     }
+    
     function filterKat(val) {
         document.querySelectorAll('.card').forEach(card => {
             card.style.display = card.dataset.jenis === val ? 'block' : 'none';
         });
         document.getElementById('navBungkus').classList.remove('show-menu');
     }
+    
     window.onclick = () => document.getElementById('navBungkus').classList.remove('show-menu');
 </script>
 </body>
