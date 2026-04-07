@@ -7,41 +7,153 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&amp;display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
-        :root { --primary: #ffffff; --bg: #f8fafc; }
-        body { font-family: 'Inter', sans-serif; background: var(--bg); margin:0; padding-top: 100px; }
-        header { position: fixed; top: 0; width: 100%; background: #fff; height: 85px; display: flex; align-items: center; padding: 0 5%; border-bottom: 2px solid #edf2f7; }
-        header a { text-decoration: none; color: var(--primary); font-weight: 700; }
-        .container { max-width: 1000px; margin: 0 auto; padding: 20px; }
-        .modal-content { background: #fff; border-radius: 16px; display: flex; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.1); }
-        .modal-left { flex: 1; background: #f8fafc; padding: 30px; display: flex; align-items: center; justify-content: center; }
-        .modal-left img { max-width: 100%; max-height: 400px; object-fit: contain; }
-        .modal-right { flex: 1.2; padding: 35px; }
-        .det-title { font-size: 24px; font-weight: 800; margin-bottom: 20px; }
-        .price-row { display: flex; justify-content: space-between; padding: 15px 0; border-top: 1px solid #eee; border-bottom: 1px solid #eee; margin-bottom: 20px; }
-        .det-price { font-size: 26px; font-weight: 800; color: #10b981; }
-        .btn-buy { display: flex; align-items: center; justify-content: center; gap: 10px; padding: 15px; border-radius: 8px; text-decoration: none; font-weight: 700; margin-bottom: 10px; color: #fff; }
-        .btn-wa { background: #22c55e; }
+        :root { --primary: #ffffff; --bg: #f8fafc; --footer: #1e293b; }
+        * { box-sizing: border-box; }
+        body { font-family: 'Inter', sans-serif; background: var(--bg); margin:0; padding-top: 100px; display: flex; flex-direction: column; min-height: 100vh; }
+        
+         
+        header { position: fixed; top: 0; width: 100%; background: #ffffff; z-index: 10000; border-bottom: 2px solid #edf2f7; height: 85px; }
+        .header-wrap { display: flex; align-items: center; padding: 0 5%; gap: 20px; max-width: 1400px; margin: 0 auto; height: 100%; }
+        .logo-area { flex-shrink: 0; display: flex; align-items: center; }
+        .logo-area img { height: 80px; width: auto; object-fit: contain; cursor: pointer; }
+
+        .container { max-width: 1200px; margin: 0 auto; padding: 20px; flex: 1; width: 100%; }
+
+         
+        .product-wrapper { display: flex; gap: 40px; background: #fff; border-radius: 16px; padding: 40px; border: 1px solid #e2e8f0; }
+        
+         
+        .product-left { flex: 1; background: #f8fafc; display: flex; align-items: center; justify-content: center; padding: 20px; border-radius: 12px; border: 1px solid #f1f5f9; }
+        .product-left img { max-width: 100%; max-height: 450px; object-fit: contain; border-radius: 8px; }
+
+         
+        .product-right { flex: 1.2; display: flex; flex-direction: column; }
+        .det-title { font-size: 28px; font-weight: 800; color: #1e293b; margin: 0 0 15px 0; line-height: 1.3; }
+        
+         
+        .price-row { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; padding: 15px 0; border-top: 1px solid #f1f5f9; border-bottom: 1px solid #f1f5f9; }
+        .price-label { font-size: 14px; font-weight: 600; color: #64748b; }
+        .det-price { font-size: 32px; font-weight: 800; color: #10b981; }
+
+         
+        .desc-label { font-weight: 800; color: #1e293b; display: block; margin-bottom: 10px; font-size: 15px; }
+        .det-desc { font-size: 15px; color: #475569; line-height: 1.6; margin-bottom: 30px; white-space: pre-wrap; }
+
+         
+        .buy-group { display: flex; flex-direction: column; gap: 12px; }
+        .btn-buy { display: flex; align-items: center; justify-content: center; gap: 10px; padding: 15px; border-radius: 8px; text-decoration: none; font-weight: 700; font-size: 14px; transition: 0.3s; }
+        
+        .btn-wa-main { background: #22c55e; color: #fff; border: none; }
+        .btn-wa-main:hover { background: #16a34a; }
+        
+        .market-btn { background: #f1f5f9; color: #334155; border: 1px solid #e2e8f0; justify-content: flex-start; padding-left: 25px; }
+        .market-btn:hover { background: #e2e8f0; }
+
+         
+        .disclaimer { font-size: 12px; color: #334155; font-weight: 700; font-style: italic; margin-top: 20px; text-align: center; line-height: 1.5; background: #f1f5f9; padding: 12px; border-radius: 8px; border: 1px solid #e2e8f0; }
+
+         
+        footer { background: var(--footer); color: #cbd5e1; padding: 40px 5% 20px; margin-top: 50px; }
+        .ft-floor-1 { width: 100%; border-bottom: 1px solid #334155; padding-bottom: 25px; margin-bottom: 30px; }
+        .ft-floor-2 { display: grid; grid-template-columns: 1.5fr 1fr 1fr 1.5fr; gap: 30px; max-width: 1400px; margin: 0 auto; }
+        .ft-box h4 { color: #fff; margin-bottom: 20px; font-size: 16px; border-left: 3px solid #fff; padding-left: 15px; line-height: 1; }
+        .ft-box p, .ft-box a { font-size: 14px; color: #cbd5e1; text-decoration: none; display: block; margin-bottom: 10px; }
+        .info-item { display: flex; gap: 10px; margin-bottom: 15px; font-size: 14px; align-items: flex-start; }
+        .btn-maps-ft { background: #0d6efd !important; color: #fff !important; text-align: center; padding: 12px; border-radius: 6px; font-weight: 700; display: block; text-decoration: none; width: 100%; }
+        .bottom-bar { text-align: center; border-top: 1px solid #334155; margin-top: 40px; padding-top: 20px; font-size: 12px; opacity: 0.6; }
+
+        @media (max-width: 768px) {
+            body { padding-top: 100px; }
+            .product-wrapper { flex-direction: column; padding: 20px; }
+            .ft-floor-2 { grid-template-columns: 1fr; }
+        }
     </style>
 </head>
 <body>
-<header><a href="/index.html"><i class="fas fa-arrow-left"></i> Kembali ke Katalog</a></header>
+
+<header>
+    <div class="header-wrap">
+        <div class="logo-area">
+            <a href="../index.html">
+                                    <img src="https://scontent.fcgk33-1.fna.fbcdn.net/v/t39.30808-6/624198570_880283444966914_4381555066372612860_n.jpg?_nc_cat=110&amp;ccb=1-7&amp;_nc_sid=1d70fc&amp;_nc_eui2=AeG_fTwdP9RssOprpQ-l1RIBvrHYblWRiiq-sdhuVZGKKjhNdhacRlYdnYnlT4w94sk&amp;_nc_ohc=6ZM8ldpgrcYQ7kNvwG8A4gV&amp;_nc_oc=Adr4FLg4oZgI6uTvL0bRSC0qjz55Rd10OSjnXL_6hTJqfy2YT6BnLvKse8Vr3ZKi4IdeIWu508BG8uM7oUCHyqZb&amp;_nc_zt=23&amp;_nc_ht=scontent.fcgk33-1.fna&amp;_nc_gid=ksMn_6bp-H9B4pKgByD64A&amp;_nc_ss=7a3a8&amp;oh=00_Af283IjfJzTlROcNu3eUjp9H86TRYJT23ByZygYxNDmW8w&amp;oe=69D811CB" alt="Logo">
+                            </a>
+        </div>
+    </div>
+</header>
+
 <div class="container">
-    <div class="modal-content">
-        <div class="modal-left"><img src="https://down-id.img.susercontent.com/file/id-11134207-7ra0n-mb88ncm4fbh2a5@resize_w450_nl.webp"></div>
-        <div class="modal-right">
+    <div class="product-wrapper">
+        <div class="product-left">
+            <img src="https://down-id.img.susercontent.com/file/id-11134207-7ra0n-mb88ncm4fbh2a5@resize_w450_nl.webp" alt="1 PACK ISI 12 PCS PASTA GIGI CIPTADENT 75 GRAM EDISI BELI 5 GRATIS 1">
+        </div>
+
+        <div class="product-right">
             <h1 class="det-title">1 PACK ISI 12 PCS PASTA GIGI CIPTADENT 75 GRAM EDISI BELI 5 GRATIS 1</h1>
+            
             <div class="price-row">
-                <span>Harga Offline</span>
+                <span class="price-label">Harga Jual Offline</span>
                 <span class="det-price">Rp 35.000</span>
             </div>
-            <p><strong>Deskripsi:</strong><br>PASTA GIGI CIPTADENT
+
+            <span class="desc-label">Deskripsi :</span>
+            <div class="det-desc">PASTA GIGI CIPTADENT
 KEMASAN 75 GRAM
-HARGA PER 12 PCS (SUDAH TERMASUK GRATISAN)</p>
+HARGA PER 12 PCS (SUDAH TERMASUK GRATISAN)</div>
+
             <div class="buy-group">
-                <a href="https://wa.me/6285100331684?text=Halo, saya mau pesan 1%20PACK%20ISI%2012%20PCS%20PASTA%20GIGI%20CIPTADENT%2075%20GRAM%20EDISI%20BELI%205%20GRATIS%201" class="btn-buy btn-wa"><i class="fab fa-whatsapp"></i> BELI VIA WHATSAPP</a>
+                <a href="https://wa.me/6285100331684?text=Halo%252C%2520Saya%2520tertarik%2520dengan%2520produk%25201%2520PACK%2520ISI%252012%2520PCS%2520PASTA%2520GIGI%2520CIPTADENT%252075%2520GRAM%2520EDISI%2520BELI%25205%2520GRATIS%25201" 
+                   target="_blank" class="btn-buy btn-wa-main">
+                    <i class="fab fa-whatsapp"></i> BELI VIA WHATSAPP
+                </a>
+
+                                    <a href="111" target="_blank" class="btn-buy market-btn">
+                        <i class="fas fa-shopping-basket" style="color:#03ac0e"></i> Beli di SHEJI TKPD                    </a>
+                                    <a href="222" target="_blank" class="btn-buy market-btn">
+                        <i class="fas fa-shopping-bag" style="color:#64748b"></i> Beli di SHEJI BLI                    </a>
+                                    <a href="666" target="_blank" class="btn-buy market-btn">
+                        <i class="fas fa-shopping-cart" style="color:#ee4d2d"></i> Beli di SHEJI                    </a>
+                                    <a href="333" target="_blank" class="btn-buy market-btn">
+                        <i class="fas fa-shopping-cart" style="color:#ee4d2d"></i> Beli di VALL SHOP                    </a>
+                                    <a href="444" target="_blank" class="btn-buy market-btn">
+                        <i class="fas fa-shopping-cart" style="color:#ee4d2d"></i> Beli di BENHIL MART                    </a>
+                                    <a href="5555" target="_blank" class="btn-buy market-btn">
+                        <i class="fas fa-shopping-cart" style="color:#ee4d2d"></i> Beli di BABY JOY                    </a>
+                            </div>
+
+            <div class="disclaimer">
+                Note : Harga Jual bisa berbeda-beda pada masing-masing Marketplace
             </div>
         </div>
     </div>
 </div>
+
+<footer>
+    <div class="ft-floor-1"></div>
+    <div class="ft-floor-2">
+        <div class="ft-box">
+            <h4>Sheji Mart</h4>
+            <div><p>Grosir & Eceran Terpercaya.</p></div>
+        </div> 
+        <div class="ft-box"> 
+            <h4>Bantuan</h4>
+            <a href="../index.html">Beranda</a>
+            <a href="#">Cara Belanja</a>
+            <a href="https://wa.me/6285100331684" target="_blank">Hubungi Kami</a>
+        </div>
+        <div class="ft-box"> 
+            <h4>Ikuti Kami</h4>
+            <div id="socialArea">
+                            </div>
+        </div>
+        <div class="ft-box"> 
+            <h4>Info Toko</h4>
+            <div class="info-item"><i class="fas fa-map-marker-alt"></i> <span>JL. BENDUNGAN JATILUHUR NO. 97, JAKARTA PUSAT</span></div>
+            <div class="info-item"><i class="fas fa-clock"></i> <span>Senin - Sabtu | Jam. 09.00 S/D 18.00</span></div>
+            <a href="https://maps.app.goo.gl/krmjNNpve5U5bhkU7" target="_blank" class="btn-maps-ft">Buka Google Maps</a>
+        </div>
+    </div>
+    <div class="bottom-bar">&copy; 2026 Sheji Mart. All Rights Reserved.</div>
+</footer>
+
 </body>
 </html>
