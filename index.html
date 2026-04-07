@@ -4,262 +4,60 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sheji Mart</title>
-    <meta name="description" content="">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&amp;display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         :root { --primary: #ffffff; --bg: #f8fafc; --footer: #1e293b; }
         * { box-sizing: border-box; }
-        body { font-family: "Inter", sans-serif; background: var(--bg); margin:0; padding-top: 100px; display: flex; flex-direction: column; min-height: 100vh; }
+        body { font-family: 'Inter', sans-serif; background: var(--bg); margin:0; padding-top: 100px; display: flex; flex-direction: column; min-height: 100vh; }
         header { position: fixed; top: 0; width: 100%; background: #ffffff; z-index: 10000; border-bottom: 2px solid #edf2f7; height: 85px; }
         .header-wrap { display: flex; align-items: center; padding: 0 5%; gap: 20px; max-width: 1400px; margin: 0 auto; height: 100%; }
-        .logo-area { flex-shrink: 0; display: flex; align-items: center; }
         .logo-area img { height: 80px; width: auto; object-fit: contain; }
-        .nav-item { position: relative; flex-shrink: 0; z-index: 10001; }
-        .btn-kategori { background: var(--primary) !important; color: #ffffff !important; border: none; padding: 12px 20px; border-radius: 8px; font-weight: 700; cursor: pointer; display: flex; align-items: center; gap: 10px; font-size: 14px; min-width: 150px; justify-content: center; }
-        .mega-menu { display: none; position: absolute; top: 100%; left: 0; background: #ffffff; min-width: 250px; box-shadow: 0 10px 30px rgba(0,0,0,0.15); border: 1px solid #e2e8f0; border-radius: 0 0 8px 8px; margin-top: 5px; }
+        .btn-kategori { background: var(--primary) !important; color: #ffffff !important; border: none; padding: 12px 20px; border-radius: 8px; font-weight: 700; cursor: pointer; display: flex; align-items: center; gap: 10px; font-size: 14px; }
+        .mega-menu { display: none; position: absolute; top: 100%; left: 0; background: #ffffff; min-width: 250px; box-shadow: 0 10px 30px rgba(0,0,0,0.15); border-radius: 0 0 8px 8px; }
         .nav-item.show-menu .mega-menu { display: block; }
         .lvl-1 { position: relative; border-bottom: 1px solid #f1f5f9; }
-        .lvl-1 a { display: flex; justify-content: space-between; align-items: center; padding: 14px 20px; text-decoration: none; color: #334155 !important; font-size: 13px; font-weight: 600; cursor: pointer; }
-        .lvl-1:hover > a { background: #f8fafc; color: var(--primary) !important; }
-        .lvl-2-wrap { display: none; position: absolute; left: 100%; top: 0; background: #ffffff; min-width: 250px; border-left: 1px solid #e2e8f0; }
-        .lvl-1:hover .lvl-2-wrap { display: block; }
-        .lvl-3-wrap { display: none; position: absolute; left: 100%; top: 0; background: #ffffff; min-width: 250px; border-left: 1px solid #e2e8f0; }
-        .lvl-2:hover .lvl-3-wrap { display: block; }
-        .search-area { flex-grow: 1; position: relative; min-width: 200px; }
-        .search-area input { width: 100%; padding: 12px 15px 12px 45px; border-radius: 8px; border: 1px solid #d1d5db; outline: none; background: #f9fafb; }
+        .lvl-1 a { display: flex; justify-content: space-between; padding: 14px 20px; text-decoration: none; color: #334155 !important; font-size: 13px; font-weight: 600; }
+        .search-area { flex-grow: 1; position: relative; }
+        .search-area input { width: 100%; padding: 12px 15px 12px 45px; border-radius: 8px; border: 1px solid #d1d5db; background: #f9fafb; }
         .search-area i { position: absolute; left: 16px; top: 14px; color: #9ca3af; }
         .container { max-width: 1400px; margin: 0 auto; padding: 20px; flex: 1; width: 100%; }
-        .bento-container { display: flex; gap: 20px; margin-bottom: 30px; width: 100%; }
-        .slider-wrapper { flex: 7; position: relative; overflow: hidden; border-radius: 12px; }
-        .slider-wrapper.full-width { flex: 10; }
-        .slide { display: none; width: 100%; }
-        .slide img { width: 100%; aspect-ratio: 21/9; max-height: 380px; object-fit: cover; border-radius: 12px; }
-        .side-banners { flex: 3; display: flex; flex-direction: column; gap: 20px; }
-        .side-banner img { width: 100%; height: 100%; object-fit: cover; border-radius: 12px; }
+        .bento-container { display: flex; gap: 20px; margin-bottom: 30px; }
+        .slider-wrapper { flex: 7; border-radius: 12px; overflow: hidden; }
+        .slider-wrapper img { width: 100%; aspect-ratio: 21/9; object-fit: cover; }
         .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 20px; }
-        .card { background: #fff; border-radius: 12px; border: 1px solid #e5e7eb; padding: 15px; cursor: pointer; transition: 0.3s; }
+        .card { background: #fff; border-radius: 12px; border: 1px solid #e5e7eb; padding: 15px; text-decoration: none; color: inherit; transition: 0.3s; }
         .card:hover { transform: translateY(-5px); border-color: var(--primary); }
         .card img { width: 100%; aspect-ratio: 1/1; object-fit: contain; }
-        .card-title { font-size: 13px; font-weight: 600; margin: 10px 0; height: auto; min-height: 38px; line-height: 1.4; overflow: hidden; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; }
-        #modalDetail { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.7); z-index: 20000; align-items: center; justify-content: center; padding: 20px; }
-        .modal-content { background: #fff; width: 100%; max-width: 850px; max-height: 90vh; border-radius: 16px; display: flex; overflow: hidden; position: relative; animation: zoomIn 0.2s ease-out; }
-        @keyframes zoomIn { from { transform: scale(0.95); opacity: 0; } to { transform: scale(1); opacity: 1; } }
-        .close-modal { position: absolute; top: 15px; right: 20px; font-size: 28px; cursor: pointer; color: #64748b; z-index: 10; }
-        .modal-left { flex: 1; background: #f8fafc; display: flex; align-items: center; justify-content: center; padding: 30px; border-right: 1px solid #f1f5f9; }
-        .modal-left img { max-width: 100%; max-height: 350px; object-fit: contain; }
-        .modal-right { flex: 1.2; padding: 35px; overflow-y: auto; }
-        .det-title { font-size: 20px; font-weight: 800; color: #1e293b; margin-bottom: 15px; line-height: 1.4; }
-        .price-row { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; padding: 12px 0; border-top: 1px solid #f1f5f9; border-bottom: 1px solid #f1f5f9; }
-        .price-label { font-size: 14px; font-weight: 600; color: #64748b; }
-        .det-price { font-size: 26px; font-weight: 800; color: #10b981; }
-        .desc-label { font-weight: 800; color: #1e293b; display: block; margin-bottom: 5px; font-size: 14px; }
-        .det-desc { font-size: 14px; color: #475569; line-height: 1.6; margin-bottom: 25px; white-space: pre-wrap; }
-        .buy-group { display: flex; flex-direction: column; gap: 10px; }
-        .btn-buy { display: flex; align-items: center; justify-content: center; gap: 10px; padding: 12px; border-radius: 8px; text-decoration: none; font-weight: 700; font-size: 13px; transition: 0.2s; }
-        .btn-wa-main { background: #22c55e; color: #fff; border: none; }
-        .market-btn { background: #f1f5f9; color: #334155; border: 1px solid #e2e8f0; justify-content: flex-start; padding-left: 20px; }
-        .disclaimer { font-size: 12px; color: #334155; font-weight: 700; font-style: italic; margin-top: 18px; text-align: center; line-height: 1.5; background: #f1f5f9; padding: 10px; border-radius: 8px; border: 1px solid #e2e8f0; }
-        footer { background: var(--footer); color: #cbd5e1; padding: 40px 5% 20px; margin-top: 50px; }
-        .ft-floor-1 { width: 100%; border-bottom: 1px solid #334155; padding-bottom: 25px; margin-bottom: 30px; }
-        .ft-floor-2 { display: grid; grid-template-columns: 1.5fr 1fr 1fr 1.5fr; gap: 30px; max-width: 1400px; margin: 0 auto; }
-        .ft-box h4 { color: #fff; margin-bottom: 20px; font-size: 16px; border-left: 3px solid #fff; padding-left: 15px; line-height: 1; }
-        .ft-box p, .ft-box a { font-size: 14px; color: #cbd5e1; text-decoration: none; display: block; margin-bottom: 10px; }
-        .ft-box a:hover { color: #fff; cursor: pointer; }
-        .info-item { display: flex; gap: 10px; margin-bottom: 15px; font-size: 14px; align-items: flex-start; }
-        .info-item i { color: #fff; margin-top: 4px; }
-        .btn-maps-ft { background: var(--primary) !important; color: #fff !important; text-align: center; padding: 12px; border-radius: 6px; font-weight: 700; display: block; text-decoration: none; width: 100%; }
-        .bottom-bar { text-align: center; border-top: 1px solid #334155; margin-top: 40px; padding-top: 20px; font-size: 12px; opacity: 0.6; }
-        @media (max-width: 768px) {
-            body { padding-top: 140px; }
-            .header-wrap { flex-wrap: wrap; height: auto; padding: 10px; }
-            .search-area { width: 100%; order: 3; }
-            .modal-content { flex-direction: column; max-height: 95vh; }
-            .modal-left { border-right: none; border-bottom: 1px solid #f1f5f9; }
-            .ft-floor-2 { grid-template-columns: 1fr; }
-        }
+        .card-title { font-size: 13px; font-weight: 600; margin: 10px 0; height: 55px; overflow: hidden; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; }
     </style>
 </head>
 <body>
 <header>
     <div class="header-wrap">
-        <div class="logo-area" id="logoPlace"></div>
+        <div class="logo-area"><img src="https://scontent.fcgk33-1.fna.fbcdn.net/v/t39.30808-6/624198570_880283444966914_4381555066372612860_n.jpg?_nc_cat=110&amp;ccb=1-7&amp;_nc_sid=1d70fc&amp;_nc_eui2=AeG_fTwdP9RssOprpQ-l1RIBvrHYblWRiiq-sdhuVZGKKjhNdhacRlYdnYnlT4w94sk&amp;_nc_ohc=6ZM8ldpgrcYQ7kNvwG8A4gV&amp;_nc_oc=Adr4FLg4oZgI6uTvL0bRSC0qjz55Rd10OSjnXL_6hTJqfy2YT6BnLvKse8Vr3ZKi4IdeIWu508BG8uM7oUCHyqZb&amp;_nc_zt=23&amp;_nc_ht=scontent.fcgk33-1.fna&amp;_nc_gid=ksMn_6bp-H9B4pKgByD64A&amp;_nc_ss=7a3a8&amp;oh=00_Af283IjfJzTlROcNu3eUjp9H86TRYJT23ByZygYxNDmW8w&amp;oe=69D811CB"></div>
         <div class="nav-item" id="navBungkus">
-            <button class="btn-kategori" id="btnKategori"><i class="fas fa-bars"></i> KATEGORI</button>
-            <div class="mega-menu" id="menuKonten"></div>
+            <button class="btn-kategori" onclick="toggleMenu()"><i class="fas fa-bars"></i> KATEGORI</button>
+            <div class="mega-menu">
+                                    <div class="lvl-1"><a>Kesehatan</a></div>
+                            </div>
         </div>
-        <div class="search-area">
-            <i class="fas fa-search"></i>
-            <input type="text" id="cari" placeholder="Cari produk..." onkeyup="filterCepat()">
-        </div>
+        <div class="search-area"><i class="fas fa-search"></i><input type="text" placeholder="Cari produk..."></div>
     </div>
 </header>
 <div class="container">
-    <div id="banner-area"></div>
-    <div class="grid" id="produkGrid">
-        <p id="msg-loading" style="grid-column: 1/-1; text-align:center; padding:50px;">Menyiapkan Katalog...</p>
+        <div class="bento-container">
+        <div class="slider-wrapper"><img src="https://lh3.googleusercontent.com/d/188l9H6fSy5f4QypFQEghLBMMUw14qgLv"></div>
     </div>
-</div>
-<div id="modalDetail">
-    <div class="modal-content">
-        <span class="close-modal" onclick="tutupDetail()">&times;</span>
-        <div class="modal-left"><img id="detImg" src=""></div>
-        <div class="modal-right">
-            <h2 id="detTitle" class="det-title"></h2>
-            <div id="detPriceArea"></div>
-            <div id="detDescContainer"></div>
-            <div class="buy-group" id="btnGroup"></div>
-        </div>
-    </div>
-</div>
-<footer id="footerArea" style="display:none;">
-    <div class="ft-floor-1" id="kolom1"></div>
-    <div class="ft-floor-2">
-        <div class="ft-box">
-            <h4 id="ftNamaToko">Sheji Mart</h4>
-            <div id="kolom2"></div>
-        </div>
-        <div class="ft-box">
-            <h4>Bantuan</h4>
-            <a onclick="location.reload()" style="cursor:pointer">Beranda</a>
-            <a href="#">Cara Belanja</a>
-            <a href="#">Syarat & Ketentuan</a>
-            <a id="waFooter" href="#" target="_blank">Hubungi Kami</a>
-        </div>
-        <div class="ft-box">
-            <h4>Ikuti Kami</h4>
-            <div id="socialArea"></div>
-        </div>
-        <div class="ft-box">
-            <h4>Info Toko</h4>
-            <div class="info-item"><i class="fas fa-map-marker-alt"></i> <span id="txtAlamat"></span></div>
-            <div class="info-item"><i class="fas fa-clock"></i> <span id="txtJam"></span></div>
-            <a id="btnMaps" href="#" target="_blank" class="btn-maps-ft">Buka Google Maps</a>
-        </div>
-    </div>
-    <div class="bottom-bar">
-        &copy; 2026 <span id="txtCopyright"></span>. All Rights Reserved.
-    </div>
-</footer>
-<script>
-    let database = [{"id_produk":"BOSBUDI-741451","nama":"1 PACK ISI 12 PCS PASTA GIGI CIPTADENT 75 GRAM EDISI BELI 5 GRATIS 1","kategori":"Kesehatan","sub_kategori":"Perawatan Diri","jenis":"Pasta Gigi","harga_offline":35000,"link_gambar":"https://down-id.img.susercontent.com/file/id-11134207-7ra0n-mb88ncm4fbh2a5@resize_w450_nl.webp","deskripsi":"PASTA GIGI CIPTADENT\nKEMASAN 75 GRAM\nHARGA PER 12 PCS (SUDAH TERMASUK GRATISAN)","list_links":[{"toko":"SHEJI TKPD","platform":"tokopedia","url":"111"},{"toko":"SHEJI BLI","platform":"blibli","url":"222"},{"toko":"SHEJI","platform":"shopee","url":"666"},{"toko":"VALL SHOP","platform":"shopee","url":"333"},{"toko":"BENHIL MART","platform":"shopee","url":"444"},{"toko":"BABY JOY","platform":"shopee","url":"5555"}]}];
-    let config = {"noWa":6285100331684,"pesanWa":"Halo, Saya tertarik dengan produk ","namaToko":"Sheji Mart","linkLogo":"https://scontent.fcgk33-1.fna.fbcdn.net/v/t39.30808-6/624198570_880283444966914_4381555066372612860_n.jpg?_nc_cat=110&ccb=1-7&_nc_sid=1d70fc&_nc_eui2=AeG_fTwdP9RssOprpQ-l1RIBvrHYblWRiiq-sdhuVZGKKjhNdhacRlYdnYnlT4w94sk&_nc_ohc=6ZM8ldpgrcYQ7kNvwG8A4gV&_nc_oc=Adr4FLg4oZgI6uTvL0bRSC0qjz55Rd10OSjnXL_6hTJqfy2YT6BnLvKse8Vr3ZKi4IdeIWu508BG8uM7oUCHyqZb&_nc_zt=23&_nc_ht=scontent.fcgk33-1.fna&_nc_gid=ksMn_6bp-H9B4pKgByD64A&_nc_ss=7a3a8&oh=00_Af283IjfJzTlROcNu3eUjp9H86TRYJT23ByZygYxNDmW8w&oe=69D811CB","seoTitle":"","seoDesc":"","themeColor":"#ffffff","slide1":"https://lh3.googleusercontent.com/d/188l9H6fSy5f4QypFQEghLBMMUw14qgLv","slide2":"","slide3":"","sAtas":"","sBawah":"","alamat":"JL. BENDUNGAN JATILUHUR NO. 97, JAKARTA PUSAT","maps":"https://maps.app.goo.gl/krmjNNpve5U5bhkU7","jam":"Senin - Sabtu | Jam. 09.00 S/D 18.00","owner":"bos_budi","htmlFooter1":"","htmlFooter2":"","socialLinks":""};
-    let categories = {"Kesehatan":{"Perawatan Diri":["Pasta Gigi"]}};
-    function init() {
-        document.getElementById("msg-loading").style.display = "none";
-        renderWeb();
-        renderNav(categories);
-        renderItem(database);
-        renderFooter();
-    }
-    function renderItem(list) {
-        const grid = document.getElementById("produkGrid");
-        if(!list || list.length === 0) {
-            grid.innerHTML = "<p style='grid-column: 1/-1; text-align:center; padding:50px;'>Produk tidak ditemukan.</p>";
-            return;
-        }
-        grid.innerHTML = list.map((p, idx) => `
-            <div class="card" onclick="bukaDetail(${idx})">
-                <img src="${p.link_gambar || 'https://via.placeholder.com/300?text=No+Image'}" loading="lazy">
-                <div class="card-title">${p.nama}</div>
+        <div class="grid">
+                    <a href="/1-pack-isi-12-pcs-pasta-gigi-ciptadent-75-gram-edisi-beli-5-gratis-1/index.html" class="card">
+                <img src="https://down-id.img.susercontent.com/file/id-11134207-7ra0n-mb88ncm4fbh2a5@resize_w450_nl.webp">
+                <div class="card-title">1 PACK ISI 12 PCS PASTA GIGI CIPTADENT 75 GRAM EDISI BELI 5 GRATIS 1</div>
+            </a>
             </div>
-        `).join("");
-    }
-    function bukaDetail(idx) {
-        const p = database[idx];
-        document.getElementById("detImg").src = p.link_gambar || "https://via.placeholder.com/600?text=No+Image";
-        document.getElementById("detTitle").innerText = p.nama;
-        document.getElementById("detPriceArea").innerHTML = `
-            <div class="price-row">
-                <span class="price-label">Harga Jual Offline</span>
-                <span class="det-price">Rp ${(p.harga_offline || 0).toLocaleString("id-ID")}</span>
-            </div>`;
-        document.getElementById("detDescContainer").innerHTML = `
-            <span class="desc-label">Deskripsi :</span>
-            <div class="det-desc">${p.deskripsi || "-"}</div>`;
-        let rawWa = config.noWa ? config.noWa.toString().replace(/^0/, "62").replace(/\D/g, "") : "";
-        let htmlBtn = `<a href="https://wa.me/${rawWa}?text=${encodeURIComponent((config.pesanWa || "Halo, pesan: ") + p.nama)}" target="_blank" class="btn-buy btn-wa-main"><i class="fab fa-whatsapp"></i> BELI VIA WHATSAPP</a>`;
-        if(p.list_links && p.list_links.length > 0) {
-            p.list_links.forEach(item => {
-                let color = "#64748b";
-                if(item.platform === "shopee") color = "#ee4d2d";
-                if(item.platform === "tokopedia") color = "#03ac0e";
-                if(item.platform === "blibli") color = "#0095da";
-                htmlBtn += `
-                    <a href="${item.url}" target="_blank" class="btn-buy market-btn">
-                        <i class="fas fa-shopping-bag" style="color:${color}"></i> Beli di ${item.toko || item.platform}
-                    </a>`;
-            });
-        }
-        htmlBtn += `<div class="disclaimer">Note : Harga Jual bisa berbeda-beda pada masing-masing Marketplace</div>`;
-        document.getElementById("btnGroup").innerHTML = htmlBtn;
-        document.getElementById("modalDetail").style.display = "flex";
-    }
-    function tutupDetail() { document.getElementById("modalDetail").style.display = "none"; }
-    window.onclick = (e) => { if(e.target == document.getElementById("modalDetail")) tutupDetail(); }
-    function renderWeb() {
-        document.documentElement.style.setProperty("--primary", config.themeColor || "#0d6efd");
-        const lp = document.getElementById("logoPlace");
-        lp.innerHTML = config.linkLogo ? `<img src="${config.linkLogo}">` : `<h2 style="color:var(--primary); margin:0;">${config.namaToko || "Sheji Mart"}</h2>`;
-        const bannerArea = document.getElementById("banner-area");
-        if(config.slide1) {
-            bannerArea.innerHTML = `
-                <div class="bento-container">
-                    <div class="slider-wrapper ${!config.sAtas ? "full-width" : ""}">
-                        <div class="slide" style="display:block"><img src="${config.slide1}"></div>
-                    </div>
-                    ${config.sAtas ? `<div class="side-banners"><div class="side-banner"><img src="${config.sAtas}"></div></div>` : ""}
-                </div>`;
-        }
-    }
-    function renderNav(pohon) {
-        const menu = document.getElementById("menuKonten");
-        let html = "";
-        for (let kat in pohon) {
-            html += `<div class="lvl-1"><a>${kat} <i class="fas fa-chevron-right" style="font-size:10px"></i></a><div class="lvl-2-wrap">`;
-            for (let sub in pohon[kat]) {
-                html += `<div class="lvl-2"><a>${sub} <i class="fas fa-chevron-right" style="font-size:10px"></i></a><div class="lvl-3-wrap">`;
-                pohon[kat][sub].forEach(jenis => {
-                    html += `<a onclick="filterKat('${jenis}')">${jenis}</a>`;
-                });
-                html += `</div></div>`;
-            }
-            html += `</div></div>`;
-        }
-        menu.innerHTML = html;
-    }
-    function renderFooter() {
-        document.getElementById("footerArea").style.display = "block";
-        document.getElementById("kolom1").innerHTML = config.htmlFooter1 || "";
-        document.getElementById("ftNamaToko").innerText = config.namaToko || "Sheji Mart";
-        document.getElementById("kolom2").innerHTML = config.htmlFooter2 || "<p>Pusat grosir dan eceran terpercaya.</p>";
-        document.getElementById("txtAlamat").innerText = config.alamat || "-";
-        document.getElementById("txtJam").innerText = config.jam || "-";
-        let rawWa = config.noWa ? config.noWa.toString().replace(/^0/, "62").replace(/\D/g, "") : "";
-        document.getElementById("waFooter").href = "https://wa.me/" + rawWa;
-        document.getElementById("btnMaps").href = config.maps || "#";
-        document.getElementById("txtCopyright").innerText = config.namaToko || "Sheji Mart";
-        if(config.socialLinks) {
-            const links = config.socialLinks.split(",");
-            document.getElementById("socialArea").innerHTML = links.map(item => {
-                const parts = item.split("|");
-                return `<a href="${parts[1] ? parts[1].trim() : "#"}" target="_blank">${parts[0].trim()}</a>`;
-            }).join("");
-        }
-    }
-    function filterKat(val) { 
-        renderItem(database.filter(p => p.jenis === val)); 
-        document.getElementById("navBungkus").classList.remove("show-menu");
-    }
-    function filterCepat() {
-        const k = document.getElementById("cari").value.toLowerCase();
-        renderItem(database.filter(p => p.nama.toLowerCase().includes(k)));
-    }
-    document.getElementById("btnKategori").onclick = (e) => {
-        e.stopPropagation();
-        document.getElementById("navBungkus").classList.toggle("show-menu");
-    };
-    init();
+</div>
+<script>
+    function toggleMenu() { document.getElementById('navBungkus').classList.toggle('show-menu'); }
 </script>
 </body>
 </html>
