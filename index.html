@@ -15,16 +15,16 @@
         header { position: fixed; top: 0; width: 100%; background: #ffffff; z-index: 10000; border-bottom: 2px solid #edf2f7; height: 85px; }
         .header-wrap { display: flex; align-items: center; padding: 0 5%; gap: 20px; max-width: 1400px; margin: 0 auto; height: 100%; }
         .logo-area { flex-shrink: 0; display: flex; align-items: center; }
-        .logo-area img { height: 70px; width: auto; object-fit: contain; }
+        .logo-area img { height: 75px; width: auto; object-fit: contain; }
         
          
         .nav-item { position: relative; flex-shrink: 0; z-index: 10001; }
         .btn-kategori { 
             background: var(--primary) !important; color: #ffffff !important; border: none; padding: 12px 20px; border-radius: 8px; font-weight: 700; 
             cursor: pointer; display: flex; align-items: center; gap: 10px; font-size: 14px; min-width: 150px; justify-content: center;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);  
         }
         
+         
         .mega-menu { 
             display: none; position: absolute; top: 100%; left: 0; background: #ffffff; min-width: 250px; 
             box-shadow: 0 10px 30px rgba(0,0,0,0.15); border: 1px solid #e2e8f0; border-radius: 0 0 8px 8px; margin-top: 5px; 
@@ -34,6 +34,16 @@
         .lvl-1 a { display: flex; justify-content: space-between; align-items: center; padding: 14px 20px; text-decoration: none; color: #334155 !important; font-size: 13px; font-weight: 600; cursor: pointer; }
         .lvl-1:hover > a { background: #f8fafc; color: var(--primary) !important; }
         
+         
+        .lvl-2-wrap { display: none; position: absolute; left: 100%; top: 0; background: #ffffff; min-width: 250px; border-left: 1px solid #e2e8f0; box-shadow: 10px 0 30px rgba(0,0,0,0.1); }
+        .lvl-1:hover .lvl-2-wrap { display: block; }
+        .lvl-2 { position: relative; border-bottom: 1px solid #f1f5f9; }
+        
+         
+        .lvl-3-wrap { display: none; position: absolute; left: 100%; top: 0; background: #ffffff; min-width: 250px; border-left: 1px solid #e2e8f0; box-shadow: 10px 0 30px rgba(0,0,0,0.1); }
+        .lvl-2:hover .lvl-3-wrap { display: block; }
+        .lvl-3-wrap a { padding: 12px 20px; font-weight: 400; font-size: 12px; }
+
         .search-area { flex-grow: 1; position: relative; min-width: 200px; }
         .search-area input { width: 100%; padding: 12px 15px 12px 45px; border-radius: 8px; border: 1px solid #d1d5db; outline: none; background: #f9fafb; }
         .search-area i { position: absolute; left: 16px; top: 14px; color: #9ca3af; }
@@ -66,18 +76,9 @@
         
          
         .btn-maps-ft { 
-            background: #0d6efd !important; 
-            color: #ffffff !important; 
-            text-align: center; 
-            padding: 12px; 
-            border-radius: 6px; 
-            font-weight: 700; 
-            display: block; 
-            text-decoration: none; 
-            width: 100%; 
-            transition: 0.3s;
+            background: #0d6efd !important; color: #fff !important; text-align: center; padding: 12px; 
+            border-radius: 6px; font-weight: 700; display: block; text-decoration: none; width: 100%; 
         }
-        .btn-maps-ft:hover { background: #0b5ed7 !important; }
 
         .bottom-bar { text-align: center; border-top: 1px solid #334155; margin-top: 40px; padding-top: 20px; font-size: 12px; opacity: 0.6; }
 
@@ -86,6 +87,7 @@
             .header-wrap { flex-wrap: wrap; height: auto; padding: 10px; }
             .search-area { width: 100%; order: 3; }
             .ft-floor-2 { grid-template-columns: 1fr; }
+            .lvl-2-wrap, .lvl-3-wrap { position: static; box-shadow: none; border-left: none; padding-left: 20px; }
         }
     </style>
 </head>
@@ -96,12 +98,27 @@
         <div class="logo-area">
                             <img src="https://scontent.fcgk33-1.fna.fbcdn.net/v/t39.30808-6/624198570_880283444966914_4381555066372612860_n.jpg?_nc_cat=110&amp;ccb=1-7&amp;_nc_sid=1d70fc&amp;_nc_eui2=AeG_fTwdP9RssOprpQ-l1RIBvrHYblWRiiq-sdhuVZGKKjhNdhacRlYdnYnlT4w94sk&amp;_nc_ohc=6ZM8ldpgrcYQ7kNvwG8A4gV&amp;_nc_oc=Adr4FLg4oZgI6uTvL0bRSC0qjz55Rd10OSjnXL_6hTJqfy2YT6BnLvKse8Vr3ZKi4IdeIWu508BG8uM7oUCHyqZb&amp;_nc_zt=23&amp;_nc_ht=scontent.fcgk33-1.fna&amp;_nc_gid=ksMn_6bp-H9B4pKgByD64A&amp;_nc_ss=7a3a8&amp;oh=00_Af283IjfJzTlROcNu3eUjp9H86TRYJT23ByZygYxNDmW8w&amp;oe=69D811CB" alt="Logo">
                     </div>
+        
         <div class="nav-item" id="navBungkus">
-            <button class="btn-kategori" onclick="toggleMenu(event)"><i class="fas fa-bars"></i> KATEGORI</button>
+            <button class="btn-kategori" onclick="toggleMenu(event)">
+                <i class="fas fa-bars"></i> KATEGORI
+            </button>
+            
             <div class="mega-menu" id="menuKonten">
-                                    <div class="lvl-1"><a>Kesehatan <i class="fas fa-chevron-right" style="font-size:10px"></i></a></div>
+                                    <div class="lvl-1">
+                        <a>Kesehatan <i class="fas fa-chevron-right" style="font-size:10px"></i></a>
+                        <div class="lvl-2-wrap">
+                                                            <div class="lvl-2">
+                                    <a>Perawatan Diri <i class="fas fa-chevron-right" style="font-size:10px"></i></a>
+                                    <div class="lvl-3-wrap">
+                                                                                    <a onclick="filterKat('Pasta Gigi')">Pasta Gigi</a>
+                                                                            </div>
+                                </div>
+                                                    </div>
+                    </div>
                             </div>
         </div>
+
         <div class="search-area">
             <i class="fas fa-search"></i>
             <input type="text" id="cari" placeholder="Cari produk..." onkeyup="filterCepat()">
@@ -117,7 +134,7 @@
                     </div>
     
     <div class="grid" id="produkGrid">
-                    <a href="1-pack-isi-12-pcs-pasta-gigi-ciptadent-75-gram-edisi-beli-5-gratis-1/index.html" class="card" data-nama="1 pack isi 12 pcs pasta gigi ciptadent 75 gram edisi beli 5 gratis 1">
+                    <a href="1-pack-isi-12-pcs-pasta-gigi-ciptadent-75-gram-edisi-beli-5-gratis-1/index.html" class="card" data-nama="1 pack isi 12 pcs pasta gigi ciptadent 75 gram edisi beli 5 gratis 1" data-jenis="Pasta Gigi">
                 <img src="https://down-id.img.susercontent.com/file/id-11134207-7ra0n-mb88ncm4fbh2a5@resize_w450_nl.webp" loading="lazy">
                 <div class="card-title">1 PACK ISI 12 PCS PASTA GIGI CIPTADENT 75 GRAM EDISI BELI 5 GRATIS 1</div>
             </a>
@@ -162,6 +179,12 @@
         document.querySelectorAll('.card').forEach(card => {
             card.style.display = card.dataset.nama.includes(k) ? 'block' : 'none';
         });
+    }
+    function filterKat(val) {
+        document.querySelectorAll('.card').forEach(card => {
+            card.style.display = card.dataset.jenis === val ? 'block' : 'none';
+        });
+        document.getElementById('navBungkus').classList.remove('show-menu');
     }
     window.onclick = () => document.getElementById('navBungkus').classList.remove('show-menu');
 </script>
