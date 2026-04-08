@@ -45,8 +45,15 @@
         .btn-wa { display: flex; align-items: center; justify-content: center; gap: 10px; padding: 15px; border-radius: 8px; text-decoration: none; font-weight: 700; background: #22c55e; color: #fff; margin-bottom: 15px; }
         .market-btn { display: flex; align-items: center; gap: 10px; padding: 12px; border-radius: 8px; text-decoration: none; font-weight: 600; background: #f1f5f9; color: #334155; margin-bottom: 10px; border: 1px solid #e2e8f0; }
 
-        footer { background: var(--footer); color: #cbd5e1; padding: 40px 5%; margin-top: 50px; }
+         
+        footer { background: var(--footer); color: #cbd5e1; padding: 40px 5%; margin-top: 50px; font-size: 14px; }
+        .ft-floor-1 { max-width: 1400px; margin: 0 auto; text-align: center; }
+        .ft-divider { border: 0; border-top: 1px solid #334155; margin: 30px auto; max-width: 1400px; }
         .ft-floor-2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 30px; max-width: 1400px; margin: 0 auto; }
+        .ft-box h4 { color: #ffffff; margin-top: 0; margin-bottom: 15px; font-weight: 700; font-size: 16px; }
+        .ft-box p { margin: 8px 0; line-height: 1.5; }
+        .ft-box a.ft-link { color: #cbd5e1; text-decoration: none; display: block; margin-bottom: 10px; transition: color 0.2s; }
+        .ft-box a.ft-link:hover { color: #ffffff; }
         .btn-maps-ft { background: #0d6efd !important; color: #fff !important; text-align: center; padding: 12px; border-radius: 6px; font-weight: 700; display: block; text-decoration: none; margin-top: 15px; }
 
         @media (max-width: 768px) {
@@ -137,6 +144,9 @@ Simpan di tempat sejuk dan tertutup rapat!</div>
 </div>
 
 <footer>
+    <div class="ft-floor-1">
+        test 1    </div>
+    <hr class="ft-divider">
     <div class="ft-floor-2">
         <div class="ft-box">
             <h4>Sheji Mart</h4>
@@ -144,13 +154,17 @@ Simpan di tempat sejuk dan tertutup rapat!</div>
         </div>
         <div class="ft-box">
             <h4>Bantuan</h4>
-            <a href="../index.html" style="color: #cbd5e1; text-decoration: none; display: block; margin-bottom: 10px;">Beranda</a>
-            <a href="#" style="color: #cbd5e1; text-decoration: none; display: block;">Cara Belanja</a>
+            <a href="../index.html" class="ft-link">Beranda</a>
+            <a href="#" class="ft-link">Cara Belanja</a>
+        </div>
+        <div class="ft-box">
+            <h4>Ikuti Kami</h4>
+            <div></div>
         </div>
         <div class="ft-box">
             <h4>Info Toko</h4>
-            <p><i class="fas fa-map-marker-alt"></i> JL. BENDUNGAN JATILUHUR NO. 97, JAKARTA PUSAT</p>
-            <p><i class="fas fa-clock"></i> Senin - Sabtu | Jam. 09.00 S/D 18.00</p>
+            <p><i class="fas fa-map-marker-alt" style="width:20px;"></i> JL. BENDUNGAN JATILUHUR NO. 97, JAKARTA PUSAT</p>
+            <p><i class="fas fa-clock" style="width:20px;"></i> Senin - Sabtu | Jam. 09.00 S/D 18.00</p>
             <a href="https://maps.app.goo.gl/krmjNNpve5U5bhkU7" target="_blank" class="btn-maps-ft">Buka Google Maps</a>
         </div>
     </div>
